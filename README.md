@@ -31,6 +31,9 @@
 | aws_route53_zone | Exported Attributes of the `aws_route53_zone.main` Resource. |
 | gandi_domain | Exported Attributes of the `gandi_domain.main` Data Source. |
 | gandi_nameservers | Exported Attributes of the `gandi_nameservers.main` Resource. |
+| github_repositories | Exported Attributes of the `github_repository.main` Data Source. |
+| github_repositories_list | Exported List of Repositories of the `github_repositories.main` Data Source. |
+| github_user | Exported Attributes of the `github_user.main` Data Source. |
 | workshop_urls | Convenience Output with URLs for the workshop. |
 <!-- END_TF_DOCS -->
 

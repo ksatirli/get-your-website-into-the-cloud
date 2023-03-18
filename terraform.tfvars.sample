@@ -1,3 +1,4 @@
 fontawesome_identifier = "..."
 gandi_key              = "..."
+github_owner           = "a-demo-user"
 github_token           = "ghp_..."

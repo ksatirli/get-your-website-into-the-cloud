@@ -1,9 +1,11 @@
-# Open Source 101: Get Your Website into the Cloud
+# Open Source 101 - Get Your Website into the Cloud
+
+> This repository contains code for the [Open Source 101](https://opensource101.com) workshop.
 
 ## Table of Contents
 
 <!-- TOC -->
-* [Open Source 101: Get Your Website into the Cloud](#open-source-101--get-your-website-into-the-cloud)
+* [Open Source 101 - Get Your Website into the Cloud](#open-source-101---get-your-website-into-the-cloud)
   * [Table of Contents](#table-of-contents)
     * [Inputs](#inputs)
     * [Outputs](#outputs)
@@ -18,13 +20,12 @@
 |------|-------------|------|:--------:|
 | fontawesome_identifier | Font Awesome Kit Identifier. | `string` | yes |
 | gandi_key | This is Gandi API Access Key. | `string` | yes |
+| github_owner | This is the target GitHub organization or individual user account to manage. | `string` | yes |
 | github_token | This is the GitHub token. | `string` | yes |
-| github_owner | This is the target GitHub organization or individual user account to manage. | `string` | no |
 | website | Object of Website Configuration data. | <pre>object({<br>    domain       = string<br>    theme_color  = string<br>    twitter_user = string<br>  })</pre> | no |
 
 ### Outputs
 
-No outputs.
 | Name | Description |
 |------|-------------|
 | aws_route53_zone | Exported Attributes of the `aws_route53_zone.main` Resource. |

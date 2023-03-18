@@ -14,6 +14,12 @@ terraform {
 
   # see https://developer.hashicorp.com/terraform/language/settings#specifying-provider-requirements
   required_providers {
+    # see https://registry.terraform.io/providers/hashicorp/aws/4.59.0
+    aws = {
+      source  = "hashicorp/aws"
+      version = ">= 4.59.0, < 5.0.0"
+    }
+
     # see https://registry.terraform.io/providers/go-gandi/gandi/2.2.3
     gandi = {
       source  = "go-gandi/gandi"

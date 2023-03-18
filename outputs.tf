@@ -32,6 +32,11 @@ output "github_user" {
 #  value       = data.github_organization.main
 #}
 
+output "random_string" {
+  description = "Exported Attributes of the `random_string.main` Resource."
+  value       = random_string.main
+}
+
 output "route53_zone" {
   description = "Exported Attributes of the `aws_route53_zone.main` Resource."
   value       = aws_route53_zone.main

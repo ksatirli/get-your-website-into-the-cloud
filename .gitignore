@@ -1,6 +1,11 @@
+# exclude environment config
 .envrc
+
+# exclude Terraform State and Variable Overrides
 **/.terraform/*
 *.tfstate
 *.tfstate.*
 terraform.tfvars
-index.html
+
+# exclude rendered website files
+dist/*

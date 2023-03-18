@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en" prefix="og: https://ogp.me/ns#">
+<head>
+  <link rel="stylesheet" href="https://unpkg.com/chota@0.8.1/dist/chota.min.css">
+  <link rel="stylesheet" href="website.css">
+
+  <title>${name} &mdash; ${description}</title>
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="${theme_color}" />
+
+  <meta name="twitter:creator" content="${twitter_user}" />
+  <meta name="twitter:description" content="${description}" />
+  <meta name="twitter:site" content="${twitter_user}" />
+  <meta name="twitter:title" content="${name}" />
+  <meta property="og:type" content="website" />
+
+  <script src="https://kit.fontawesome.com/${fontawesome_identifier}.js" crossorigin="anonymous"></script>
+</head>
+
+<body id="top">
+<nav class="nav">
+  <div class="nav-right">
+    <a href="https://twitter.com/${twitter_user}"><i class="fa-brands fa-twitter"></i></a>
+    <a href="https://github.com/${username}"><i class="fa-brands fa-github"></i></a>
+  </div>
+</nav>
+
+<div class="container">
+  <div class="hero">
+    <div class="is-center">
+      <h1 class="is-full-width">${name}</h1>
+      <h3 class="is-full-width">${description}</h3>
+    </div>
+  </div>
+
+  <section id="repositories">
+    <h2><i class="fa-brands fa-github"></i> Repositories</h2>
+
+    <div class="row">
+      %{~ for repository in repositories ~}
+      <div class="col-12 card">
+        <header>
+          <h4><a href="${repository.html_url}"><samp class="text-primary">${repository.full_name}</samp></a></h4>
+        </header>
+
+        <div class="row">
+          <div class="col">
+            <p>${repository.description}</p>
+          </div>
+        </div>
+
+        <footer>
+          <div class="row">
+          <!--
+            <div class="col">
+              %{~ if length(repository.topics) > 0 ~}
+              <i class="clear fa-thin fa-tags"></i>&nbsp;
+              %{~ endif ~}
+              %{~ for topic in repository.topics ~}
+              <a href="https://github.com/search?q=topic%3A${topic}+${query}" class="bg-${topic} topic">
+                %{~ if topic == "boundary" ~}
+                <i class="fak fa-boundary"></i> Boundary
+                %{~ endif ~}%{~ if topic == "consul" ~}
+                <i class="fak fa-consul"></i> Consul
+                %{~ endif ~}%{~ if topic == "nomad" ~}
+                <i class="fak fa-nomad"></i> Nomad
+                %{~ endif ~}%{~ if topic == "packer" ~}
+                <i class="fak fa-packer"></i> Packer
+                %{~ endif ~}%{~ if topic == "terraform" ~}
+                <i class="fak fa-terraform"></i> Terraform
+                %{~ endif ~}%{~ if topic == "vagrant" ~}
+                <i class="fak fa-vagrant"></i> Vagrant
+                %{~ endif ~}%{~ if topic == "vault" ~}
+                <i class="fak fa-vault"></i> Vault
+                %{~ endif ~}%{~ if topic == "waypoint" ~}
+                <i class="fak fa-waypoint"></i> Waypoint
+                %{~ endif ~}
+              </a>&nbsp;
+              %{~ endfor ~}
+            </div>
+            -->
+          </div>
+        </footer>
+      </div>
+      %{~ endfor ~}
+
+    </div>
+  </section>
+</div>
+
+<footer class="bg-dark text-center">
+  <div class="row">
+    <div class="col"><a href="#top" class="text-white"><i class="fa-solid fa-arrow-up"></i> up</a></div>
+    <div class="col text-light">crafted with <i class="fa-solid fa-heart text-white"></i>️ by <a href="https://github.com/${username}" class="text-white"><strong>${name}</strong></a></div>
+  </div>
+</footer>
+
+</body>
+</html>

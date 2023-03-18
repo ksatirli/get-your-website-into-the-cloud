@@ -10,15 +10,28 @@ data "github_user" "main" {
 #}
 
 locals {
-  # use this search query if you are retrieving projects stored under a personal GitHub Account
-  # change "is:public" to "is:private" if you intend to showcase private projects
-  # change "archived:false" to "archived:true" if you intend to showcase archived projects
-  github_api_query = "user:${data.github_user.main.username} is:public archived:false"
+  # Option 1: Personal GitHub Account
+  # uncomment and use this object if you are retrieving projects stored under a personal GitHub Account
+  github_owner_data = {
+    description = data.github_user.main.bio
+    name        = data.github_user.main.name
+    query       = "user:${data.github_user.main.username}"
+    username    = data.github_user.main.username
+  }
 
-  # uncomment and use this search query if you are retrieving projects stored under a GitHub Organization
+  # Option 2: GitHub Organization
+  # uncomment and use this object if you are retrieving projects stored under a GitHub Organization
+  # then comment the `github_owner_data` object of "Option 1" above
+  # github_owner_data = {
+  #   description = data.github_organization.main.description
+  #   name        = data.github_organization.main.name
+  #   query       = "org:${data.github_organization.main.orgname}"
+  #   username    = data.github_organization.main.orgname
+  # }
+
   # change "is:public" to "is:private" if you intend to showcase private projects
   # change "archived:false" to "archived:true" if you intend to showcase archived projects
-  #github_api_query = "org:${data.github_organization.main.orgname} is:public archived:false"
+  github_api_query = "${local.github_owner_data.query} is:public archived:false"
 }
 
 # get all repositories for the GitHub Organization

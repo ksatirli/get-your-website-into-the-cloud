@@ -3,4 +3,4 @@
 *.tfstate
 *.tfstate.*
 terraform.tfvars
-./index.html
+index.html

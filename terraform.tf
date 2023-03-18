@@ -1,7 +1,7 @@
 terraform {
   #  # Terraform Cloud provides a runtime environment for your Terraform Runs.
-  #  # see https://developer.hashicorp.com/terraform/tutorials/cloud-get-started/cloud-sign-up
-  #  # and https://developer.hashicorp.com/terraform/language/settings/terraform-cloud
+  #  # See https://developer.hashicorp.com/terraform/tutorials/cloud-get-started/cloud-sign-up
+  #  # and https://developer.hashicorp.com/terraform/language/settings/terraform-cloud for more information.
   #  cloud {
   #    # see https://developer.hashicorp.com/terraform/cli/cloud/settings#organization
   #    organization = "a-demo-organization"
@@ -46,5 +46,5 @@ terraform {
   }
 
   # see https://developer.hashicorp.com/terraform/language/settings#specifying-a-required-terraform-version
-  required_version = ">= 1.4.2"
+  required_version = ">= 1.4.2, < 2.0.0"
 }

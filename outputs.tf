@@ -1,8 +1,3 @@
-output "aws_route53_zone" {
-  description = "Exported Attributes of the `aws_route53_zone.main` Resource."
-  value       = aws_route53_zone.main
-}
-
 output "gandi_domain" {
   description = "Exported Attributes of the `gandi_domain.main` Data Source."
   value       = data.gandi_domain.main
@@ -26,6 +21,11 @@ output "github_repositories" {
 output "github_user" {
   description = "Exported Attributes of the `github_user.main` Data Source."
   value       = data.github_user.main
+}
+
+output "route53_zone" {
+  description = "Exported Attributes of the `aws_route53_zone.main` Resource."
+  value       = aws_route53_zone.main
 }
 
 output "workshop_urls" {

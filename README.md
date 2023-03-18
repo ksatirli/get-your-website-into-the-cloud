@@ -19,14 +19,18 @@
 | fontawesome_identifier | Font Awesome Kit Identifier. | `string` | yes |
 | gandi_key | This is Gandi API Access Key. | `string` | yes |
 | github_token | This is the GitHub token. | `string` | yes |
-| domains | Project-specific Domains. | `string` | no |
 | github_owner | This is the target GitHub organization or individual user account to manage. | `string` | no |
-| theme_color | Theme color for the website. | `string` | no |
-| twitter_user | Twitter Username. | `string` | no |
+| website | Object of Website Configuration data. | <pre>object({<br>    domain       = string<br>    theme_color  = string<br>    twitter_user = string<br>  })</pre> | no |
 
 ### Outputs
 
 No outputs.
+| Name | Description |
+|------|-------------|
+| aws_route53_zone | Exported Attributes of the `aws_route53_zone.main` Resource. |
+| gandi_domain | Exported Attributes of the `gandi_domain.main` Data Source. |
+| gandi_nameservers | Exported Attributes of the `gandi_nameservers.main` Resource. |
+| workshop_urls | Convenience Output with URLs for the workshop. |
 <!-- END_TF_DOCS -->
 
 ## Author Information

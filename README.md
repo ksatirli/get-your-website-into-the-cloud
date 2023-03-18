@@ -5,9 +5,30 @@
 <!-- TOC -->
 * [Open Source 101: Get Your Website into the Cloud](#open-source-101--get-your-website-into-the-cloud)
   * [Table of Contents](#table-of-contents)
+    * [Inputs](#inputs)
+    * [Outputs](#outputs)
   * [Author Information](#author-information)
   * [License](#license)
 <!-- TOC -->
+
+<!-- BEGIN_TF_DOCS -->
+### Inputs
+
+| Name | Description | Type | Required |
+|------|-------------|------|:--------:|
+| fontawesome_identifier | Font Awesome Kit Identifier. | `string` | yes |
+| gandi_key | This is Gandi API Access Key. | `string` | yes |
+| github_token | This is the GitHub token. | `string` | yes |
+| domains | Project-specific Domains. | `string` | no |
+| github_owner | This is the target GitHub organization or individual user account to manage. | `string` | no |
+| theme_color | Theme color for the website. | `string` | no |
+| twitter_user | Twitter Username. | `string` | no |
+
+### Outputs
+
+No outputs.
+<!-- END_TF_DOCS -->
+
 ## Author Information
 
 This module is maintained by the contributors listed on [GitHub](https://github.com/ksatirli/get-your-website-into-the-cloud/graphs/contributors).

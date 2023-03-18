@@ -1,17 +1,25 @@
 terraform {
-#  # see https://developer.hashicorp.com/terraform/language/settings/terraform-cloud
-#  cloud {
-#    # see https://developer.hashicorp.com/terraform/cli/cloud/settings#organization
-#    organization = "a-demo-organization"
-#
-#    # see https://developer.hashicorp.com/terraform/cli/cloud/settings#workspaces
-#    workspaces {
-#      name = "get-your-website-into-the-cloud"
-#    }
-#  }
+  #  # Terraform Cloud provides a runtime environment for your Terraform Runs.
+  #  # see https://developer.hashicorp.com/terraform/tutorials/cloud-get-started/cloud-sign-up
+  #  # and https://developer.hashicorp.com/terraform/language/settings/terraform-cloud
+  #  cloud {
+  #    # see https://developer.hashicorp.com/terraform/cli/cloud/settings#organization
+  #    organization = "a-demo-organization"
+  #
+  #    # see https://developer.hashicorp.com/terraform/cli/cloud/settings#workspaces
+  #    workspaces {
+  #      name = "get-your-website-into-the-cloud"
+  #    }
+  #  }
 
   # see https://developer.hashicorp.com/terraform/language/settings#specifying-provider-requirements
   required_providers {
+    # see https://registry.terraform.io/providers/go-gandi/gandi/2.2.3
+    gandi = {
+      source  = "go-gandi/gandi"
+      version = "2.2.3"
+    }
+
     # see https://registry.terraform.io/providers/integrations/github/5.18.3/
     github = {
       source  = "integrations/github"

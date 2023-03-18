@@ -13,6 +13,12 @@ provider "aws" {
   region = "us-east-1" # US East (N. Virginia)
 }
 
+# The Gandi Provider is set to retrieve configuration from the executing environment
+# see https://registry.terraform.io/providers/go-gandi/gandi/latest/docs
+provider "gandi" {
+  key = var.gandi_key
+}
+
 # The GitHub Provider is set to retrieve configuration from the executing environment
 # see https://registry.terraform.io/providers/integrations/github/latest/docs
 provider "github" {

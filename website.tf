@@ -34,3 +34,46 @@ resource "local_file" "stylesheet" {
 
   filename = "${path.module}/dist/website.css"
 }
+
+module "websites" {
+  source = "../terraform-aws-cloudfront-website"
+  #source = "git@github.com:ksatirli/terraform-aws-cloudfront-website?ref=updates-and-upgrades"
+  #version = "2.0.0"
+
+  # see https://developer.hashicorp.com/terraform/language/providers/configuration#alias-multiple-provider-configurations
+  providers = {
+    # NOTE: ACM Certificates for usage with CloudFront must be created in the `us-east-1` region
+    # see https://amzn.to/2TW2J16
+    aws.certificate = aws.certificate
+  }
+
+  # take domain name and remove dot characters from string, then append suffix with random string
+  s3_bucket_name = "${local.github_owner_data.username}-site-${random_string.main.result}"
+  domain_name    = data.gandi_domain.main.name
+
+  # create `www` subdomain for broader accessibility
+  alternate_domain_names = [
+    "www.${data.gandi_domain.main.name}",
+  ]
+}
+
+# see https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/s3_object
+resource "aws_s3_object" "main" {
+  # iterate over website files
+  # see https://developer.hashicorp.com/terraform/language/meta-arguments/for_each
+  for_each = toset([
+    local_file.website.filename,
+    local_file.stylesheet.filename
+  ])
+
+  # retrieve S3 Bucket name from Module
+  bucket = module.websites.aws_s3_bucket.id
+
+  # replace `dist/` to clean up destination
+  key    = replace(each.key, "dist/", "")
+  source = each.key
+
+  # set an ETag to allow for easier content invalidation
+  # see https://developer.hashicorp.com/terraform/language/functions/filemd5
+  etag = filemd5(each.key)
+}

@@ -57,21 +57,35 @@ module "websites" {
   ]
 }
 
+locals {
+  website_files = [
+    {
+      path = local_file.website.filename,
+      type = "text/html",
+      }, {
+      path = local_file.stylesheet.filename,
+      type = "text/css",
+    }
+  ]
+}
+
 # see https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/s3_object
 resource "aws_s3_object" "main" {
   # iterate over website files
   # see https://developer.hashicorp.com/terraform/language/meta-arguments/for_each
-  for_each = toset([
-    local_file.website.filename,
-    local_file.stylesheet.filename
-  ])
+  for_each = {
+    for index, file in local.website_files :
+    file.path => file
+  }
 
   # retrieve S3 Bucket name from Module
   bucket = module.websites.aws_s3_bucket.id
 
+  content_type = each.value.type
+
   # replace `dist/` to clean up destination
-  key    = replace(each.key, "dist/", "")
-  source = each.key
+  key    = replace(each.value.path, "dist/", "")
+  source = each.value.path
 
   # set an ETag to allow for easier content invalidation
   # see https://developer.hashicorp.com/terraform/language/functions/filemd5

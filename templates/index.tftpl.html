@@ -36,14 +36,6 @@
   </head>
 
   <body id="top">
-    <nav class="nav">
-      <!-- social icons -->
-      <div class="nav-right">
-        <a href="https://twitter.com/${twitter_user}"><i class="fa-brands fa-twitter"></i></a>
-        <a href="https://github.com/${username}"><i class="fa-brands fa-github"></i></a>
-      </div>
-    </nav>
-
     <!-- back to top button -->
     <button id="scrollTopBtn">
       <i class="fa-solid fa-arrow-up">scroll to top</i>
@@ -51,10 +43,18 @@
 
     <div class="container">
       <div class="hero">
-        <div>
           <h1>${name}</h1>
+          <!-- Twitter  -->
+          <button class="button icon-only social-button twitter">
+            <a href="https://twitter.com/@OS101Series"><i class="fa-brands fa-twitter text-white"></i></a>
+          </button>
+
+          <!-- GitHub  -->
+          <button class="button icon-only social-button github">
+            <a href="https://github.com/ksatirli"><i class="fa-brands fa-github text-white"></i></a>
+          </button>
+          
           <h3>${description}</h3>
-        </div>
       </div>
 
       <section id="repositories">

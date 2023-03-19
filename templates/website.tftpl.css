@@ -94,3 +94,15 @@ section {
   right: 30px;
   z-index: 99;
 }
+
+.social-button {
+  margin-right: 1em;
+}
+
+.twitter {
+  background-color: #1DA1F2;
+}
+
+.github {
+  background-color: black;
+}

@@ -1,63 +1,83 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en" prefix="og: https://ogp.me/ns#">
-<head>
-  <link rel="stylesheet" href="https://unpkg.com/chota@0.8.1/dist/chota.min.css">
-  <link rel="stylesheet" href="website.css">
+  <head>
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/chota@0.8.1/dist/chota.min.css"
+    />
+    <link rel="stylesheet" href="website.css" />
 
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer">
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+      integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
 
-  <title>${name} &mdash; ${description}</title>
+    <title>${name} &mdash; ${description}</title>
 
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="${theme_color}" />
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="${theme_color}" />
 
-  <meta name="twitter:creator" content="${twitter_user}" />
-  <meta name="twitter:description" content="${description}" />
-  <meta name="twitter:site" content="${twitter_user}" />
-  <meta name="twitter:title" content="${name}" />
-  <meta property="og:type" content="website" />
+    <meta name="twitter:creator" content="${twitter_user}" />
+    <meta name="twitter:description" content="${description}" />
+    <meta name="twitter:site" content="${twitter_user}" />
+    <meta name="twitter:title" content="${name}" />
+    <meta property="og:type" content="website" />
 
-  <script src="https://kit.fontawesome.com/${fontawesome_identifier}.js" crossorigin="anonymous"></script>
-</head>
+    <script
+      src="https://kit.fontawesome.com/${fontawesome_identifier}.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
 
-<body id="top">
-<nav class="nav">
-  <div class="nav-right">
-    <a href="https://twitter.com/${twitter_user}"><i class="fa-brands fa-twitter"></i></a>
-    <a href="https://github.com/${username}"><i class="fa-brands fa-github"></i></a>
-  </div>
-</nav>
+  <body id="top">
+    <nav class="nav">
+      <div class="nav-right">
+        <a href="https://twitter.com/${twitter_user}"
+          ><i class="fa-brands fa-twitter"></i
+        ></a>
+        <a href="https://github.com/${username}"
+          ><i class="fa-brands fa-github"></i
+        ></a>
+      </div>
+    </nav>
 
-<div class="container">
-  <div class="hero">
-    <div>
-      <h1>${name}</h1>
-      <h3>${description}</h3>
-    </div>
-  </div>
+    <div class="container">
+      <div class="hero">
+        <div>
+          <h1>${name}</h1>
+          <h3>${description}</h3>
+        </div>
+      </div>
 
-  <section id="repositories">
-    <h2><i class="fa-brands fa-github"></i> Repositories</h2>
-
-    <div class="row">
-      %{~ for repository in repositories ~}
-      <div class="col-12 card">
-        <header>
-          <h4><a href="${repository.html_url}"><samp class="text-primary">${repository.full_name}</samp></a></h4>
-        </header>
+      <section id="repositories">
+        <h2><i class="fa-brands fa-github"></i> Repositories</h2>
 
         <div class="row">
-          <div class="col">
-            <p>${repository.description}</p>
-          </div>
-        </div>
+          %{~ for repository in repositories ~}
+          <div class="col-12 card">
+            <header>
+              <h4>
+                <a href="${repository.html_url}"
+                  ><samp class="text-primary">${repository.full_name}</samp></a
+                >
+              </h4>
+            </header>
 
-        <footer>
-          <div class="row">
-          <!--
+            <div class="row">
+              <div class="col">
+                <p>${repository.description}</p>
+              </div>
+            </div>
+
+            <footer>
+              <div class="row">
+                <!--
             <div class="col">
               %{~ if length(repository.topics) > 0 ~}
               <i class="clear fa-thin fa-tags"></i>&nbsp;
@@ -85,18 +105,21 @@
               %{~ endfor ~}
             </div>
             -->
+              </div>
+            </footer>
           </div>
-        </footer>
-      </div>
-      %{~ endfor ~}
-
+          %{~ endfor ~}
+        </div>
+      </section>
     </div>
-  </section>
-</div>
 
-<footer class="bg-dark text-center">
-  <div class="text-light">crafted with <i class="fa-solid fa-heart text-white"></i>️ by <a href="https://github.com/${username}" class="text-white"><strong>${name}</strong></a></div>
-</footer>
-
-</body>
+    <footer class="bg-dark text-center">
+      <div class="text-light">
+        crafted with <i class="fa-solid fa-heart text-white"></i>️ by
+        <a href="https://github.com/${username}" class="text-white"
+          ><strong>${name}</strong></a
+        >
+      </div>
+    </footer>
+  </body>
 </html>

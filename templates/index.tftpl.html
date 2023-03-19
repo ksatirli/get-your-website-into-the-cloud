@@ -4,6 +4,9 @@
   <link rel="stylesheet" href="https://unpkg.com/chota@0.8.1/dist/chota.min.css">
   <link rel="stylesheet" href="website.css">
 
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer">
+
   <title>${name} &mdash; ${description}</title>
 
   <meta charset="utf-8">
@@ -30,9 +33,9 @@
 
 <div class="container">
   <div class="hero">
-    <div class="is-center">
-      <h1 class="is-full-width">${name}</h1>
-      <h3 class="is-full-width">${description}</h3>
+    <div>
+      <h1>${name}</h1>
+      <h3>${description}</h3>
     </div>
   </div>
 
@@ -92,10 +95,7 @@
 </div>
 
 <footer class="bg-dark text-center">
-  <div class="row">
-    <div class="col"><a href="#top" class="text-white"><i class="fa-solid fa-arrow-up"></i> up</a></div>
-    <div class="col text-light">crafted with <i class="fa-solid fa-heart text-white"></i>️ by <a href="https://github.com/${username}" class="text-white"><strong>${name}</strong></a></div>
-  </div>
+  <div class="text-light">crafted with <i class="fa-solid fa-heart text-white"></i>️ by <a href="https://github.com/${username}" class="text-white"><strong>${name}</strong></a></div>
 </footer>
 
 </body>

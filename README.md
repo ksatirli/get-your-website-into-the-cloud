@@ -33,6 +33,7 @@
 | github_repositories | Exported Attributes of the `github_repository.main` Data Source. |
 | github_repositories_list | Exported List of Repositories of the `github_repositories.main` Data Source. |
 | github_user | Exported Attributes of the `github_user.main` Data Source. |
+| invalidation_command | AWS CLI Command for CloudFront Invalidation. |
 | random_string | Exported Attributes of the `random_string.main` Resource. |
 | route53_zone | Exported Attributes of the `aws_route53_zone.main` Resource. |
 | workshop_urls | Convenience Output with URLs for the workshop. |

@@ -1,3 +1,8 @@
+
+html {
+  scroll-behavior: smooth;
+}
+
 :root {
   --color-primary: ${theme_color};
   --color-tag-dark: #24292f;
@@ -80,4 +85,20 @@ a.button.dark:hover {
 
 section {
   margin: 5rem auto;
+}
+
+#scrollTopBtn {
+  display: block;
+  position: fixed;
+  bottom: 20px;
+  right: 30px;
+  z-index: 99;
+}
+
+.twitter {
+  background-color: #1DA1F2;
+}
+
+.github {
+  background-color: black;
 }

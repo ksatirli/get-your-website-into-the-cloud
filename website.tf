@@ -89,5 +89,5 @@ resource "aws_s3_object" "main" {
 
   # set an ETag to allow for easier content invalidation
   # see https://developer.hashicorp.com/terraform/language/functions/filemd5
-  etag = filemd5(each.key)
+  #etag = filemd5(each.key)
 }

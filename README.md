@@ -10,8 +10,6 @@
   * [Requirements](#requirements)
   * [Usage](#usage)
     * [Inputs](#inputs)
-    * [Usage](#usage-1)
-    * [Inputs](#inputs-1)
     * [Outputs](#outputs)
   * [Author Information](#author-information)
   * [License](#license)

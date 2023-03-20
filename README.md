@@ -1,17 +1,59 @@
 # Open Source 101 - Get Your Website into the Cloud
 
-> This repository contains code for the [Open Source 101](https://opensource101.com) workshop.
+> This repository contains code for the [Open Source 101](https://opensource101.com) workshop _"Get Your Website into the Cloud"_.
 
 ## Table of Contents
 
 <!-- TOC -->
 * [Open Source 101 - Get Your Website into the Cloud](#open-source-101---get-your-website-into-the-cloud)
   * [Table of Contents](#table-of-contents)
+  * [Requirements](#requirements)
+  * [Usage](#usage)
     * [Inputs](#inputs)
+    * [Usage](#usage-1)
+    * [Inputs](#inputs-1)
     * [Outputs](#outputs)
   * [Author Information](#author-information)
   * [License](#license)
 <!-- TOC -->
+
+## Requirements
+
+* Amazon Web Services (AWS) [Account](https://aws.amazon.com/account/)
+* GitHub [Account](https://github.com/join)
+* Terraform `1.4.x` or newer.
+
+## Usage
+
+1.) Copy [`./terraform.tfvars.sample`](./terraform.tfvars.sample) to `./terraform.tfvars` and fill in all values.
+
+* `fontawesome_identifier` expects a [Font Awesome](https://fontawesome.com) Kit identifier.
+* `gandi_key` expects a [Gandi](https://www.gandi.net/en/solutions/api) API key.
+* `github_owner` expects a GitHub User or GitHub Organization slug.
+* `github_token` expects a GitHub [Personal Access Token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token).
+
+Optionally, all values may be provided as environment variables (including options such as `DirEnv` and `.envrc` files)
+https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token
+
+2.) Initialize Terraform to retrieve OS-specific provider binaries and underlying Terraform Module code.
+
+```shell
+cd get-your-website-into-the-cloud
+
+terraform init
+```
+
+3.) Preview the expected deployment resources by running `terraform plan`
+
+```shell
+terraform plan
+```
+
+4.) If the output of step 3 looks acceptable, deploy the changes using `terraform apply`
+
+```shell
+terraform apply
+```
 
 <!-- BEGIN_TF_DOCS -->
 ### Inputs

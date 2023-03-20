@@ -36,9 +36,8 @@ resource "local_file" "stylesheet" {
 }
 
 module "websites" {
-  source = "../terraform-aws-cloudfront-website"
-  #source = "git@github.com:ksatirli/terraform-aws-cloudfront-website?ref=updates-and-upgrades"
-  #version = "2.0.0"
+  source  = "ksatirli/cloudfront-website/aws"
+  version = "1.0.0"
 
   # see https://developer.hashicorp.com/terraform/language/providers/configuration#alias-multiple-provider-configurations
   providers = {

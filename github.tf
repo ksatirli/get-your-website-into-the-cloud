@@ -14,6 +14,7 @@ locals {
   # uncomment and use this object if you are retrieving projects stored under a personal GitHub Account
   github_owner_data = {
     description = data.github_user.main.bio
+    image       = data.github_user.main.avatar_url
     name        = data.github_user.main.name
     query       = "user:${data.github_user.main.username}"
     username    = data.github_user.main.username

@@ -34,7 +34,7 @@ output "github_user" {
 
 output "invalidation_command" {
   description = "AWS CLI Command for CloudFront Invalidation."
-  value       = "aws cloudfront create-invalidation --distribution-id ${module.websites.aws_cloudfront_distribution.id} --paths '/*'"
+  value       = "aws cloudfront create-invalidation --distribution-id ${module.websites.aws_cloudfront_distribution.id} --paths '/${basename(local_file.website.filename)}' '/${basename(local_file.stylesheet.filename)}'"
 }
 
 output "random_string" {

@@ -31,7 +31,6 @@
 * `github_token` expects a GitHub [Personal Access Token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token).
 
 Optionally, all values may be provided as environment variables (including options such as `DirEnv` and `.envrc` files)
-https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token
 
 2.) Initialize Terraform to retrieve OS-specific provider binaries and underlying Terraform Module code.
 

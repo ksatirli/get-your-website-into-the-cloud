@@ -1,4 +1,3 @@
-
 html {
   scroll-behavior: smooth;
 }
@@ -87,7 +86,7 @@ section {
   margin: 5rem auto;
 }
 
-#scrollTopBtn {
+#scroll-to-top {
   display: block;
   position: fixed;
   bottom: 20px;

@@ -21,10 +21,9 @@
   </head>
 
   <body id="top">
-    <!-- back to top button -->
-    <button id="scrollTopBtn">
-      <i class="fa-solid fa-arrow-up">scroll to top</i>
-    </button>
+    <a href="#top" id="scroll-to-top">
+      scroll to top <i class="fa-solid fa-arrow-up"></i>
+    </a>
 
     <div class="container">
       <div class="hero">
@@ -104,32 +103,24 @@
 
     <footer class="bg-dark text-center">
       <div class="text-light">
-        crafted with <i class="fa-solid fa-heart text-white"></i> by<a href="https://github.com/${username}" class="text-white"><strong>${name}</strong></a>
       </div>
     </footer>
 
-</body>
-
-  <!-- Scroll to top -->
   <script>
-    // Get the button:
-    let mybutton = document.getElementById("scrollTopBtn");
+    // get button by ID
+    let scrollToTopButton = document.getElementById("scroll-to-top");
 
-    // When the user scrolls down 20px from the top of the document, show the button
-    window.onscroll = function() {scrollFunction()};
-    mybutton.click
+    // show button when user scrolls more than 20px from the top of the Document
+    window.onscroll = function() { showGoToTopButton()};
 
-    function scrollFunction() {
+    function showGoToTopButton() {
       if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-        mybutton.style.display = "block";
+        scrollToTopButton.style.display = "block";
       } else {
-        mybutton.style.display = "none";
+        scrollToTopButton.style.display = "none";
       }
     }
-
-    // When the user clicks on the button, scroll to the top of the document
-    function topFunction() {
-      window.scrollTo(0, 0);
-    }
   </script>
+
+</body>
 </html>

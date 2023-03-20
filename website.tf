@@ -14,7 +14,7 @@ resource "local_file" "website" {
   content = templatefile("./templates/index.tftpl.html", {
     fontawesome_identifier = var.fontawesome_identifier
     name                   = local.github_owner_data.name,
-    username               = local.github_owner_data.username,
+    github_user            = local.github_owner_data.username,
     description            = local.github_owner_data.description,
     repositories           = data.github_repository.main,
     theme_color            = var.website.theme_color,

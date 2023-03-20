@@ -38,6 +38,6 @@ variable "website" {
     theme_color = "#e71e25" # Open Source 101-Red
 
     # Website Twitter Account
-    twitter_user = "@OS101Series"
+    twitter_user = "OS101Series"
   }
 }

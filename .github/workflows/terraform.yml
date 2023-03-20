@@ -22,7 +22,7 @@ jobs:
         uses: hashicorp/setup-terraform@v2
         with:
           terraform_wrapper: false
-          terraform_version: ${{ secrets.TERRAFORM_VERSION }}
+          terraform_version: 1.4.2
 
       - name: Initialize Terraform for Module
         run: terraform init

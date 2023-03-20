@@ -80,13 +80,13 @@ resource "aws_s3_object" "main" {
   # retrieve S3 Bucket name from Module
   bucket = module.websites.aws_s3_bucket.id
 
+  content      = file(each.value.path)
   content_type = each.value.type
-
-  # replace `dist/` to clean up destination
-  key    = replace(each.value.path, "dist/", "")
-  source = each.value.path
 
   # set an ETag to allow for easier content invalidation
   # see https://developer.hashicorp.com/terraform/language/functions/filemd5
   etag = filemd5(each.key)
+
+  # replace `dist/` to clean up destination
+  key = replace(each.value.path, "dist/", "")
 }

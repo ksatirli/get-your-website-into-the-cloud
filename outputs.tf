@@ -49,7 +49,7 @@ output "route53_zone" {
 
 output "workshop_urls" {
   description = "Convenience Output with URLs for the workshop."
-  
+
   value = [
     "https://s3.console.aws.amazon.com/s3/buckets/${module.websites.aws_s3_bucket.id}?region=${module.websites.aws_s3_bucket.region}",
     "https://us-east-1.console.aws.amazon.com/route53/v2/hostedzones#ListRecordSets/${aws_route53_zone.main.zone_id}",

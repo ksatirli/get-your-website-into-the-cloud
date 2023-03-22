@@ -56,6 +56,11 @@ module "websites" {
   alternate_domain_names = [
     "www.${data.gandi_domain.main.name}",
   ]
+
+  depends_on = [
+    # declare explicit dependency on DNS Zone
+    aws_route53_zone.main
+  ]
 }
 
 locals {
@@ -91,4 +96,10 @@ resource "aws_s3_object" "main" {
 
   # replace `dist/` to clean up destination
   key = replace(each.value.path, "dist/", "")
+
+  depends_on = [
+    # declare explicit dependencies on generated files
+    local_file.website,
+    local_file.stylesheet
+  ]
 }

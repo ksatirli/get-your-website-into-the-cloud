@@ -1,5 +1,11 @@
+# exclude environment config
 .envrc
+
+# exclude Terraform State and Variable Overrides
 **/.terraform/*
 *.tfstate
 *.tfstate.*
-terraform.tfvars.sample
+terraform.tfvars
+
+# exclude rendered website files
+dist/*

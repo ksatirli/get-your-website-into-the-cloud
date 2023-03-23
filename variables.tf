@@ -6,7 +6,7 @@ variable "gandi_key" {
 
 variable "github_owner" {
   type        = string
-  description = "This is the target GitHub organization or individual user account to manage."
+  description = "This is the target GitHub organization or individual user account to poll."
 }
 
 variable "github_token" {

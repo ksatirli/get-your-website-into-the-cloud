@@ -59,7 +59,7 @@ terraform apply
 |------|-------------|------|:--------:|
 | fontawesome_identifier | Font Awesome Kit Identifier. | `string` | yes |
 | gandi_key | This is Gandi API Access Key. | `string` | yes |
-| github_owner | This is the target GitHub organization or individual user account to manage. | `string` | yes |
+| github_owner | This is the target GitHub organization or individual user account to poll. | `string` | yes |
 | github_token | This is the GitHub token. | `string` | yes |
 | website | Object of Website Configuration data. | <pre>object({<br>    domain       = string<br>    theme_color  = string<br>    twitter_user = string<br>  })</pre> | no |
 

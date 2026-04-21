@@ -24,10 +24,10 @@
 
 * `github_owner` expects a GitHub User or GitHub Organization slug.
 * `github_token` expects a GitHub [Personal Access Token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token).
-  Terraform now creates or updates the `${github_owner}.github.io` repository, enables GitHub Pages, and commits website files. The token therefore needs write access for repository administration and contents updates.
-  * Classic PAT: grant the `repo` scope.
-  * Fine-grained PAT: grant repository access to `${github_owner}.github.io` with at least `Administration` (write) and `Contents` (write) permissions.
-* Warning: Terraform manages the `${github_owner}.github.io` repository and will create/update it as needed. The generated `index.html` and `styles.css` in that repository are managed by Terraform and may be overwritten on apply.
+  Terraform creates the `${github_owner}.github.io` repository if it does not already exist, enables GitHub Pages, and commits website files. The token therefore needs write access for repository administration and contents updates.
+  If the `${github_owner}.github.io` repository already exists, import it into Terraform state before running `terraform apply`:
+  ```shell
+  terraform import github_repository.main ${github_owner}.github.io
 
 Optionally, all values may be provided as environment variables (including options such as `DirEnv` and `.envrc` files)
 

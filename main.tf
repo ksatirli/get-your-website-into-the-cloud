@@ -3,12 +3,6 @@ data "github_user" "main" {
   username = var.github_owner
 }
 
-# If your projects are hosted inside a GitHub Organization, uncomment this:
-# see https://registry.terraform.io/providers/integrations/github/latest/docs/data-sources/organization
-#data "github_organization" "main" {
-#  name = var.github_owner
-#}
-
 locals {
   # Option 1: Personal GitHub Account
   # uncomment and use this object if you are retrieving projects stored under a personal GitHub Account
@@ -50,4 +44,49 @@ data "github_repository" "main" {
   for_each = toset(data.github_repositories.main.full_names)
 
   full_name = each.key
+}
+
+# see https://registry.terraform.io/providers/integrations/github/6.11.1/docs/resources/repository
+resource "github_repository" "main" {
+  name        = "${var.github_owner}.github.io"
+  description = "Terraform made this website for me!"
+
+  visibility = "public"
+  auto_init  = true
+
+  pages {
+    source {
+      branch = "main"
+      path   = "/"
+    }
+  }
+}
+
+# Wait for the auto-init commit on `main` to propagate before writing files
+# or letting Pages try to build — avoids the 422 "main branch must exist
+# before GitHub Pages can be built" race.
+resource "time_sleep" "wait_for_branch" {
+  depends_on      = [github_repository.main]
+  create_duration = "15s"
+}
+
+# see https://registry.terraform.io/providers/integrations/github/6.11.1/docs/resources/repository_file
+resource "github_repository_file" "main" {
+  for_each = {
+    "index.html" = local_file.website.content
+    "styles.css" = local_file.stylesheet.content
+  }
+
+  depends_on = [time_sleep.wait_for_branch]
+
+  repository = github_repository.main.name
+  branch     = "main"
+
+  file    = each.key
+  content = each.value
+
+  commit_message      = "Managed by Terraform"
+  commit_author       = var.github_owner
+  commit_email        = "noreply@github.com"
+  overwrite_on_create = true
 }

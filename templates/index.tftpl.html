@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html lang="en" prefix="og: https://ogp.me/ns#">
   <head>
-    <link rel="stylesheet" href="https://unpkg.com/chota@0.8.1/dist/chota.min.css" />
-    <link rel="stylesheet" href="/website.css" />
+    <link rel="stylesheet" href="https://unpkg.com/chota@0.8.1/dist/chota.min.css" integrity="sha384-tSoYnRUCzsL3lLzDB6qyBeG9Up6+pYuSxusMGYz0GBqAomc3yVY7WFzMIirjXxW4" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha384-PPIZEGYM1v8zp5Py7UjFb79S58UeqCL9pYVnVPURKEqvioPROaVAJKKLzvH2rDnI" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="/styles.css" />
 
     <title>${name} &mdash; ${description}</title>
 
@@ -13,11 +14,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="${theme_color}" />
 
-    <meta name="twitter:creator" content="@${twitter_user}" />
     <meta name="twitter:description" content="${description}" />
-    <meta name="twitter:domain" content="${domain}" />
     <meta name="twitter:image" content="${image}">
-    <meta name="twitter:site" content="${twitter_user}" />
     <meta name="twitter:title" content="${name}" />
 
     <meta property="og:description" content="${description}">
@@ -27,22 +25,13 @@
   </head>
 
   <body id="top">
-    <script src="https://kit.fontawesome.com/${fontawesome_identifier}.js" crossorigin="anonymous"></script>
-
     <a href="#top" id="scroll-to-top">scroll to top <i class="fa-solid fa-arrow-up"></i></a>
 
     <div class="container">
       <div class="hero">
           <h1><img src="${image}" alt="${name}" title="${name}" height="38" width="38"> ${name}</h1>
           <h2>${description}</h2>
-
-          <button class="button icon-only twitter">
-            <a href="https://twitter.com/${twitter_user}"><i class="fa-brands fa-twitter text-white"></i></a>
-          </button>
-
-          <button class="button icon-only github">
-            <a href="https://github.com/${github_user}"><i class="fa-brands fa-github text-white"></i></a>
-          </button>
+          <a href="https://github.com/${github_user}" class="button icon-only github" aria-label="GitHub profile"><i class="fa-brands fa-github text-white"></i></a>
 
       </div>
 

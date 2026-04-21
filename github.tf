@@ -3,12 +3,6 @@ data "github_user" "main" {
   username = var.github_owner
 }
 
-# If your projects are hosted inside a GitHub Organization, uncomment this:
-# see https://registry.terraform.io/providers/integrations/github/latest/docs/data-sources/organization
-#data "github_organization" "main" {
-#  name = var.github_owner
-#}
-
 locals {
   # Option 1: Personal GitHub Account
   # uncomment and use this object if you are retrieving projects stored under a personal GitHub Account

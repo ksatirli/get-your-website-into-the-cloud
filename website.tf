@@ -6,7 +6,7 @@ resource "local_file" "website" {
     github_user  = local.github_owner_data.username,
     image        = local.github_owner_data.image,
     description  = local.github_owner_data.description,
-    repositories = data.github_repository.main,
+    repositories = values(data.github_repository.main),
     theme_color  = var.website_theme_color,
     query        = local.github_owner_data.query,
   })

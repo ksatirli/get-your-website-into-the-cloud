@@ -1,6 +1,7 @@
-# https://github.com/terraform-linters/tflint/blob/master/docs/user-guide/module-inspection.md
 config {
-  module = false
+  call_module_type    = "none"
+  force               = false
+  disabled_by_default = false
 }
 
 plugin "terraform" {
@@ -8,28 +9,11 @@ plugin "terraform" {
   preset  = "recommended"
 }
 
-# see https://github.com/terraform-linters/tflint-ruleset-terraform/blob/main/docs/rules/terraform_naming_convention.md
-rule "terraform_naming_convention" {
+plugin "azurerm" {
   enabled = true
-  format  = "snake_case"
-}
 
-# see https://github.com/terraform-linters/tflint-ruleset-terraform/blob/main/docs/rules/terraform_comment_syntax.md
-rule "terraform_comment_syntax" {
-  enabled = true
-}
+  source  = "github.com/terraform-linters/tflint-ruleset-azurerm"
 
-# see https://github.com/terraform-linters/tflint-ruleset-terraform/blob/main/docs/rules/terraform_documented_outputs.md
-rule "terraform_documented_outputs" {
-  enabled = true
-}
-
-# see https://github.com/terraform-linters/tflint-ruleset-terraform/blob/main/docs/rules/terraform_documented_variables.md
-rule "terraform_documented_variables" {
-  enabled = true
-}
-
-# see https://github.com/terraform-linters/tflint-ruleset-terraform/blob/main/docs/rules/terraform_workspace_remote.md
-rule "terraform_workspace_remote" {
-  enabled = true
+  # see https://github.com/terraform-linters/tflint-ruleset-azurerm/releases
+  version = "0.31.1"
 }

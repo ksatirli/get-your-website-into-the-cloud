@@ -13,14 +13,14 @@ jobs:
 
       # see https://github.com/actions/checkout
       - name: Checkout Repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v6
         with:
           # Full git history is needed to get a proper list of changed files within `super-linter`
           fetch-depth: 0
 
       # see https://github.com/github/super-linter
       - name: Lint Code with Super-Linter
-        uses: github/super-linter/slim@v4
+        uses: github/super-linter/slim@v8
         env:
           # see https://github.com/github/super-linter#environment-variables
           VALIDATE_ALL_CODEBASE: true

@@ -53,13 +53,6 @@ resource "github_repository" "main" {
 
   visibility = "public"
   auto_init  = true
-
-  pages {
-    source {
-      branch = "main"
-      path   = "/"
-    }
-  }
 }
 
 # see https://registry.terraform.io/providers/integrations/github/6.11.1/docs/resources/repository_file
@@ -79,4 +72,48 @@ resource "github_repository_file" "main" {
   commit_author       = var.github_owner
   commit_email        = "noreply@github.com"
   overwrite_on_create = true
+}
+
+# Enable GitHub Pages AFTER the `main` branch has content, to avoid the
+# 422 "main branch must exist before GitHub Pages can be built" race the
+# integrations/github provider exhibits when `pages` is embedded in the
+# repository resource.
+resource "null_resource" "pages" {
+  depends_on = [github_repository_file.main]
+
+  triggers = {
+    repository = github_repository.main.name
+  }
+
+  provisioner "local-exec" {
+    interpreter = ["/bin/sh", "-c"]
+    environment = {
+      GITHUB_TOKEN = var.github_token
+      REPO         = "${var.github_owner}/${github_repository.main.name}"
+    }
+    command = <<-EOT
+      set -e
+      payload='{"source":{"branch":"main","path":"/"}}'
+      # Try to create; if Pages is already configured, update instead.
+      status=$(curl -sS -o /tmp/pages.out -w "%%{http_code}" \
+        -X POST \
+        -H "Authorization: Bearer $GITHUB_TOKEN" \
+        -H "Accept: application/vnd.github+json" \
+        -H "X-GitHub-Api-Version: 2022-11-28" \
+        "https://api.github.com/repos/$REPO/pages" \
+        -d "$payload")
+      if [ "$status" = "409" ] || [ "$status" = "422" ]; then
+        curl -sS -f \
+          -X PUT \
+          -H "Authorization: Bearer $GITHUB_TOKEN" \
+          -H "Accept: application/vnd.github+json" \
+          -H "X-GitHub-Api-Version: 2022-11-28" \
+          "https://api.github.com/repos/$REPO/pages" \
+          -d "$payload"
+      elif [ "$status" != "201" ]; then
+        cat /tmp/pages.out
+        exit 1
+      fi
+    EOT
+  }
 }

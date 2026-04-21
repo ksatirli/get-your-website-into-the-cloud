@@ -18,7 +18,7 @@ resource "local_file" "website" {
 resource "local_file" "stylesheet" {
   # see https://developer.hashicorp.com/terraform/language/functions/templatefile
   content = templatefile("./templates/styles.tftpl.css", {
-    theme_color = var.website.theme_color,
+    theme_color = var.website_theme_color,
   })
 
   filename = "${path.module}/dist/styles.css"

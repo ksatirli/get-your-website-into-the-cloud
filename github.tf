@@ -45,3 +45,38 @@ data "github_repository" "main" {
 
   full_name = each.key
 }
+
+# see https://registry.terraform.io/providers/integrations/github/6.11.1/docs/resources/repository
+resource "github_repository" "main" {
+  name        = "${var.github_owner}.github.io"
+  description = "Terraform made this website for me!"
+
+  visibility = "public"
+  auto_init  = true
+
+  pages {
+    source {
+      branch = "main"
+      path   = "/"
+    }
+  }
+}
+
+# see https://registry.terraform.io/providers/integrations/github/6.11.1/docs/resources/repository_file
+resource "github_repository_file" "main" {
+  for_each = {
+    "index.html" = local_file.website.content
+    "styles.css" = local_file.stylesheet.content
+  }
+
+  repository = github_repository.main.name
+  branch     = "main"
+
+  file    = each.key
+  content = each.value
+
+  commit_message      = "Managed by Terraform"
+  commit_author       = var.github_owner
+  commit_email        = "noreply@github.com"
+  overwrite_on_create = true
+}

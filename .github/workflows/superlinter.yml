@@ -18,9 +18,9 @@ jobs:
           # Full git history is needed to get a proper list of changed files within `super-linter`
           fetch-depth: 0
 
-      # see https://github.com/github/super-linter
+      # see https://github.com/super-linter/super-linter
       - name: Lint Code with Super-Linter
-        uses: github/super-linter/slim@v8
+        uses: super-linter/super-linter/slim@v8
         env:
           # see https://github.com/github/super-linter#environment-variables
           VALIDATE_ALL_CODEBASE: true

@@ -12,5 +12,5 @@ variable "github_token" {
 variable "website_theme_color" {
   description = "Website Theme color."
   default     = "#d74117" # DevOpsCon orange
-  type = string
+  type        = string
 }

@@ -2,13 +2,13 @@
 resource "local_file" "website" {
   # see https://developer.hashicorp.com/terraform/language/functions/templatefile
   content = templatefile("./templates/index.tftpl.html", {
-    name                   = local.github_owner_data.name,
-    github_user            = local.github_owner_data.username,
-    image                  = local.github_owner_data.image,
-    description            = local.github_owner_data.description,
-    repositories           = data.github_repository.main,
-    theme_color            = var.website_theme_color,
-    query                  = local.github_owner_data.query,
+    name         = local.github_owner_data.name,
+    github_user  = local.github_owner_data.username,
+    image        = local.github_owner_data.image,
+    description  = local.github_owner_data.description,
+    repositories = data.github_repository.main,
+    theme_color  = var.website_theme_color,
+    query        = local.github_owner_data.query,
   })
 
   filename = "${path.module}/dist/index.html"

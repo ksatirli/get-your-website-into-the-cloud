@@ -23,15 +23,3 @@ resource "local_file" "stylesheet" {
 
   filename = "${path.module}/dist/styles.css"
 }
-
-locals {
-  website_files = [
-    {
-      path = local_file.website.filename,
-      type = "text/html",
-      }, {
-      path = local_file.stylesheet.filename,
-      type = "text/css",
-    }
-  ]
-}

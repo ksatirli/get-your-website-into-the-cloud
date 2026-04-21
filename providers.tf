@@ -7,6 +7,3 @@ provider "github" {
 
 # see https://registry.terraform.io/providers/hashicorp/local/latest/docs
 provider "local" {}
-
-# see https://registry.terraform.io/providers/hashicorp/random/latest/docs
-provider "random" {}
